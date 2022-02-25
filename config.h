@@ -28,8 +28,11 @@ static char *colors[][3] = {
 static const char *const autostart[] = {
 	"st", NULL,
 	"firefox", NULL,
-	"sh","-c","slstatus &",
-	"sh","-c","xset s 60",
+//	"sh","-c","while :; do ${HOME}/.dwm/dwmrc.sh -;done",NULL,
+	"sh","-c","while :; do feh --randomize --bg-fill ~/Pictures/wallpaper/*.jpg; sleep 600; done &",NULL,
+	"sh","-c","slstatus&",NULL,
+	"sh","-c","sleep 10 && ~/.nutstore/dist/bin/nutstore-pydaemon.py &",NULL,
+	"sh","-c","sleep 10 && compton &",NULL,
 
 	NULL /* terminate */
 			
