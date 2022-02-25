@@ -1,13 +1,18 @@
 --- dwm.c
 +++ dwm.c
-@@ -816,9 +925,7 @@ drawbar(Monitor *m)
+@@ -234,6 +234,7 @@ static int xerror(Display *dpy, XErrorEvent *ee);
+ static int xerrordummy(Display *dpy, XErrorEvent *ee);
+ static int xerrorstart(Display *dpy, XErrorEvent *ee);
+ static void zoom(const Arg *arg);
++static void autostart_exec(void);
  
- 	/* draw status first so it can be overdrawn by tags later */
- 	if (m == selmon) { /* status is only drawn on selected monitor */
--		drw_setscheme(drw, scheme[SchemeNorm]);
--		tw = TEXTW(stext) - lrpad + 2; /* 2px right padding */
--		drw_text(drw, m->ww - tw, 0, tw, bh, 0, stext, 0);
-+		tw = m->ww - drawstatusbar(m, bh, stext);
- 	}
- 
- 	for (c = m->clients; c; c = c->next) {
+ /* variables */
+ static const char broken[] = "broken";
+@@ -2193,6 +2248,7 @@ main(int argc, char *argv[])
+ 	if (!(dpy = XOpenDisplay(NULL)))
+ 		die("dwm: cannot open display");
+ 	checkotherwm();
++	autostart_exec();
+ 	setup();
+ #ifdef __OpenBSD__
+ 	if (pledge("stdio rpath proc exec", NULL) == -1)

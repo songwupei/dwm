@@ -25,6 +25,16 @@ static char *colors[][3] = {
        [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
 };
 
+static const char *const autostart[] = {
+	"st", NULL,
+	"firefox", NULL,
+	"sh","-c","slstatus &",
+	"sh","-c","xset s 60",
+
+	NULL /* terminate */
+			
+};
+
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
