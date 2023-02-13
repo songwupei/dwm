@@ -49,6 +49,7 @@ static char *colors[][3] = {
 
 static const char *const autostart[] = {
 	"st", NULL,
+	"thunar", NULL,
 /*	"firefox", NULL, */
 /*	"wps", NULL, */
 /*	"sh","-c","sleep 10 && ~/.nutstore/dist/bin/nutstore-pydaemon.py &",NULL,*/
@@ -72,6 +73,7 @@ static const Rule rules[] = {
 	{ "gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 	{ "wps",      NULL,       NULL,       1 << 3,       0,           -1 },
+	{ "thunar",   NULL,       NULL,       1 << 2,       0,           -1 },
 };
 
 /* layout(s) */
@@ -187,7 +189,7 @@ static Key keys[] = {
 	{ 0,             XF86XK_AudioLowerVolume,  spawn,          {.v = lowervolume }},
 	{ 0,             XF86XK_AudioRaiseVolume,  spawn,          {.v = raisevolume }},
 	{ 0,             XF86XK_AudioMute,  spawn,          {.v = mutevolume }},
-	{ Mod4Mask,                     XK_l,      spawn,          {.v = slockcmd }},
+	{ Mod1Mask,                     XK_l,      spawn,          {.v = slockcmd }},
 
 };
 
