@@ -48,16 +48,15 @@ static char *colors[][3] = {
 };
 
 static const char *const autostart[] = {
-	"st", NULL,
-	"thunar", NULL,
 /*	"firefox", NULL, */
 /*	"wps", NULL, */
 /*	"sh","-c","sleep 10 && ~/.nutstore/dist/bin/nutstore-pydaemon.py &",NULL,*/
+	/*"sh","-c","slstatus&",NULL,*/
+	/*"zsh","-c","sleep 10 ; case $(cat /etc/issue | cut -d " " -f1) { (Arch)  picom & ;; (Ubuntu) compton & ;; }",NULL,*/
 	"zsh","-c","${HOME}/.config/dwm/dwmrc.zsh",NULL,
 	"sh","-c","while :; do feh --randomize --bg-fill ~/Pictures/wallpaper/*.jpg; sleep 600; done &",NULL,
-	/*"sh","-c","slstatus&",NULL,*/
-	"zsh","-c","sleep 10 ; case $(cat /etc/issue | cut -d " " -f1) { (Arch)  picom & ;; (Ubuntu) compton & ;; }",NULL,
 	"sh","-c","sleep 10 && ibus-daemon --xim -d ",NULL,
+	"st", NULL,
 	NULL /* terminate */
 };
 
@@ -73,7 +72,7 @@ static const Rule rules[] = {
 	{ "gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 	{ "wps",      NULL,       NULL,       1 << 3,       0,           -1 },
-	{ "thunar",   NULL,       NULL,       1 << 2,       0,           -1 },
+	{ "Thunar",   NULL,       NULL,       5,       0,           -1 },
 };
 
 /* layout(s) */
