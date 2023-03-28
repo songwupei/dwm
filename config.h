@@ -10,8 +10,10 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;     /* 0 means no bar */
 static const int topbar             = 1;     /* 0 means bottom bar */
-static char font[]            = "monospace:size=10";
-static char dmenufont[]       = "monospace:size=10";
+static char font[]            = "Source Code Pro:size=10";
+static char dmenufont[]       = "Source Code Pro:size=10";
+/*static char font[]            = "monospace:size=10";*
+*static char dmenufont[]       = "monospace:size=10";*/
 static const char *fonts[]          = { font };
 static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
@@ -28,6 +30,7 @@ static char *colors[][3] = {
 static const char *const autostart[] = {
 	"st", NULL,
 	"firefox", NULL,
+	"wps", NULL,
 //	"sh","-c","while :; do ${HOME}/.dwm/dwmrc.sh -;done",NULL,
 	"sh","-c","while :; do feh --randomize --bg-fill ~/Pictures/wallpaper/*.jpg; sleep 600; done &",NULL,
 	"sh","-c","slstatus&",NULL,
@@ -50,6 +53,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "wps",      NULL,       NULL,       1 << 3,       0,           -1 },
 };
 
 /* layout(s) */
@@ -94,7 +98,11 @@ static const char *raisevolume[] = {"sh","-c","amixer set Master '3+'",NULL};
 static const char *mutevolume[] = {"sh","-c","amixer set Master toggle",NULL};
 /* static const char *mutevolume[] = {"sh","-c","if [ $(amixer get Master | tail -n1 |cut -d [ -f4 | tr -d ]) == 'off' ];then;amixer set Master unmute;else;amixer set Master mute;fi",NULL}; */
 static const char *lowervolume[] = {"sh","-c","amixer set Master '3-'",NULL};
+<<<<<<< HEAD
 >>>>>>> 0106633 (bindsym XF86XK_Audio**)
+=======
+static const char *slockcmd[] = { "slock", NULL };
+>>>>>>> d63303a (bindsym win(Mod4Mask)+l slock)
 /*
  * Xresources preferences to load at startup
  */
@@ -155,6 +163,8 @@ static Key keys[] = {
 	{ 0,             XF86XK_AudioLowerVolume,  spawn,          {.v = lowervolume }},
 	{ 0,             XF86XK_AudioRaiseVolume,  spawn,          {.v = raisevolume }},
 	{ 0,             XF86XK_AudioMute,  spawn,          {.v = mutevolume }},
+	{ Mod4Mask,                     XK_l,      spawn,          {.v = slockcmd }},
+
 };
 
 /* button definitions */
