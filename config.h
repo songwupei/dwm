@@ -72,7 +72,7 @@ static const Rule rules[] = {
 	{ "gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 	{ "wps",      NULL,       NULL,       1 << 3,       0,           -1 },
-	{ "Thunar",   NULL,       NULL,       5,       0,           -1 },
+	{ "thunar",   NULL,       NULL,       5,       0,           -1 },
 };
 
 /* layout(s) */
