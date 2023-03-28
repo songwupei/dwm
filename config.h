@@ -33,7 +33,8 @@ static const char *const autostart[] = {
 	"sh","-c","slstatus&",NULL,
 	"sh","-c","sleep 10 && ~/.nutstore/dist/bin/nutstore-pydaemon.py &",NULL,
 	"sh","-c","sleep 10 && compton &",NULL,
-
+	"sh","-c","sleep 10 && ibus-daemon --xim -d ",NULL,
+	
 	NULL /* terminate */
 			
 };
@@ -71,6 +72,10 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+/* https://cgit.freedesktop.org/xorg/proto/x11proto/tree/XF86keysym.h */
+#define XF86XK_AudioLowerVolume	0x1008FF11   /* Volume control down        */
+#define XF86XK_AudioMute	0x1008FF12   /* Mute sound from the system */
+#define XF86XK_AudioRaiseVolume	0x1008FF13   /* Volume control up          */ 
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -79,10 +84,17 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 static const Key keys[] = {
 =======
+=======
+static const char *raisevolume[] = {"sh","-c","amixer set Master '3+'",NULL};
+static const char *mutevolume[] = {"sh","-c","amixer set Master toggle",NULL};
+/* static const char *mutevolume[] = {"sh","-c","if [ $(amixer get Master | tail -n1 |cut -d [ -f4 | tr -d ]) == 'off' ];then;amixer set Master unmute;else;amixer set Master mute;fi",NULL}; */
+static const char *lowervolume[] = {"sh","-c","amixer set Master '3-'",NULL};
+>>>>>>> 0106633 (bindsym XF86XK_Audio**)
 /*
  * Xresources preferences to load at startup
  */
@@ -140,6 +152,9 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ 0,             XF86XK_AudioLowerVolume,  spawn,          {.v = lowervolume }},
+	{ 0,             XF86XK_AudioRaiseVolume,  spawn,          {.v = raisevolume }},
+	{ 0,             XF86XK_AudioMute,  spawn,          {.v = mutevolume }},
 };
 
 /* button definitions */
@@ -155,7 +170,5 @@ static const Button buttons[] = {
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
-	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
-	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
 
