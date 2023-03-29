@@ -107,9 +107,9 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *raisevolume[] = {"sh","-c","pactl set-sink-volume 0 +3%",NULL};
-static const char *mutevolume[] = {"sh","-c"," pactl set-sink-mute 0 toggle ",NULL};
-static const char *lowervolume[] = {"sh","-c","pactl set-sink-volume 0 -3%",NULL};
+static const char *raisevolume[] = {"sh","-c","pactl set-sink-volume @DEFAULT_SINK@ +3%",NULL};
+static const char *mutevolume[] = {"sh","-c"," pactl set-sink-mute @DEFAULT_SINK@ toggle ",NULL};
+static const char *lowervolume[] = {"sh","-c","pactl set-sink-volume @DEFAULT_SINK@ -3%",NULL};
 static const char *slockcmd[] = { "slock", NULL };
 
 /*
