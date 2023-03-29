@@ -254,11 +254,8 @@ static void setmfact(const Arg *arg);
 static void setup(void);
 static void seturgent(Client *c, int urg);
 static void showhide(Client *c);
-<<<<<<< HEAD
-=======
 static void sigchld(int unused);
 static void sigdwmblocks(const Arg *arg);
->>>>>>> 2633df8 (my dwm)
 static void spawn(const Arg *arg);
 static Monitor *systraytomon(Monitor *m);
 static void tag(const Arg *arg);
@@ -303,13 +300,9 @@ static char stextc[STATUSLENGTH];
 static char stexts[STATUSLENGTH];
 static int screen;
 static int sw, sh;           /* X display screen geometry width, height */
-<<<<<<< HEAD
-static int bh;               /* bar height */
-=======
 static int bh, blw, ble;     /* bar geometry */
 static int wsbar;            /* width of selmon bar */
 static int wstext;           /* width of status text */
->>>>>>> 2633df8 (my dwm)
 static int lrpad;            /* sum of left and right padding for text */
 static int (*xerrorxlib)(Display *, XErrorEvent *);
 static unsigned int dwmblockssig;
@@ -533,21 +526,6 @@ buttonpress(XEvent *e)
 		focus(NULL);
 	}
 	if (ev->window == selmon->barwin) {
-<<<<<<< HEAD
-		i = x = 0;
-		do
-			x += TEXTW(tags[i]);
-		while (ev->x >= x && ++i < LENGTH(tags));
-		if (i < LENGTH(tags)) {
-			click = ClkTagBar;
-			arg.ui = 1 << i;
-		} else if (ev->x < x + TEXTW(selmon->ltsymbol))
-			click = ClkLtSymbol;
-		else if (ev->x > selmon->ww - (int)TEXTW(stext) - getsystraywidth())
-			click = ClkStatusText;
-		else
-			click = ClkWinTitle;
-=======
                 if (ev->x < ble - blw) {
                         i = -1, x = -ev->x;
                         do
@@ -564,7 +542,6 @@ buttonpress(XEvent *e)
                         click = ClkStatusText;
                 } else
                                 return;
->>>>>>> 2633df8 (my dwm)
 	} else if ((c = wintoclient(ev->window))) {
 		focus(c);
 		restack(selmon);
@@ -1452,9 +1429,6 @@ maprequest(XEvent *e)
 	static XWindowAttributes wa;
 	XMapRequestEvent *ev = &e->xmaprequest;
 
-<<<<<<< HEAD
-	if (!XGetWindowAttributes(dpy, ev->window, &wa) || wa.override_redirect)
-=======
 	Client *i;
 	if ((i = wintosystrayicon(ev->window))) {
 		sendevent(i->win, netatom[Xembed], StructureNotifyMask, CurrentTime, XEMBED_WINDOW_ACTIVATE, 0, systray->win, XEMBED_EMBEDDED_VERSION);
@@ -1465,7 +1439,6 @@ maprequest(XEvent *e)
 	if (!XGetWindowAttributes(dpy, ev->window, &wa))
 		return;
 	if (wa.override_redirect)
->>>>>>> e60319c (patch systray)
 		return;
 	if (!wintoclient(ev->window))
 		manage(ev->window, &wa);
@@ -2090,8 +2063,6 @@ showhide(Client *c)
 }
 
 void
-<<<<<<< HEAD
-=======
 sigchld(int unused)
 {
 	pid_t pid;
@@ -2116,9 +2087,6 @@ sigchld(int unused)
 }
 
 void
-<<<<<<< HEAD
->>>>>>> 8957892 (patch cool-autostart)
-=======
 sigdwmblocks(const Arg *arg)
 {
         static int fd = -1;
@@ -2150,7 +2118,6 @@ signal:
 }
 
 void
->>>>>>> 2633df8 (my dwm)
 spawn(const Arg *arg)
 {
 	if (arg->v == dmenucmd)

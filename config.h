@@ -107,27 +107,11 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-<<<<<<< HEAD
-static const Key keys[] = {
-=======
-=======
-static const char *raisevolume[] = {"sh","-c","amixer set Master '3+'",NULL};
-static const char *mutevolume[] = {"sh","-c","amixer set Master toggle",NULL};
-/* static const char *mutevolume[] = {"sh","-c","if [ $(amixer get Master | tail -n1 |cut -d [ -f4 | tr -d ]) == 'off' ];then;amixer set Master unmute;else;amixer set Master mute;fi",NULL}; */
-static const char *lowervolume[] = {"sh","-c","amixer set Master '3-'",NULL};
-<<<<<<< HEAD
->>>>>>> 0106633 (bindsym XF86XK_Audio**)
-=======
-=======
 static const char *raisevolume[] = {"sh","-c","pactl set-sink-volume 0 +3%",NULL};
 static const char *mutevolume[] = {"sh","-c"," pactl set-sink-mute 0 toggle ",NULL};
 static const char *lowervolume[] = {"sh","-c","pactl set-sink-volume 0 -3%",NULL};
->>>>>>> 2633df8 (my dwm)
 static const char *slockcmd[] = { "slock", NULL };
->>>>>>> d63303a (bindsym win(Mod4Mask)+l slock)
+
 /*
  * Xresources preferences to load at startup
  */
@@ -150,7 +134,6 @@ ResourcePref resources[] = {
 };
 
 static Key keys[] = {
->>>>>>> 84c6b22 (patch xresources)
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
